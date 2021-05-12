@@ -1,32 +1,50 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { SafeAreaView, StyleSheet, TextInput,Button, Alert } from "react-native";
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+const UselessTextInput = () => {
+  const [text, onChangeText] = React.useState("Useless Text");
+  const [number, onChangeNumber] = React.useState(null);
 
-export default function TabOneScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-    </View>
+    <SafeAreaView>
+
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeNumber}
+        placeholderTextColor="#000" 
+        placeholder="Enter wifi name"
+        
+      />
+      
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeNumber}
+        placeholderTextColor="#000" 
+        placeholder="Enter wifi password"
+        
+      />
+      
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeNumber}
+        placeholderTextColor="#000" 
+        placeholder="Enter direction"
+      />
+      <Button
+        title="Press me"
+        onPress={() => Alert.alert('Simple Button pressed')}
+      />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  input: {
+    height: 40,
+    margin: 12,
+    backgroundColor: '#fff',
+    borderWidth: 1,
   },
 });
+
+export default UselessTextInput;
